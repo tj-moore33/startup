@@ -48,12 +48,15 @@ Weather App lets you stay informed about the weather in any city across the coun
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Will use HTML for the structure of the application. One login page and one for weather display
+- **CSS** - Application styling to improve user experience on different screen sizes, formatting, and coloring
+- **React** - Provides routing capabilities for navigating between the Login Page and Weather Display Page.
+- **Service** - Backend services with endppoints for:
+    - Login
+    - City and state selection
+    - Retriving weather data
+- **DB/Login** - Store users and their favorite cities. Register and login users.
+- **WebSocket** - As users view cities, friends can see what cities they viewed. 
 
 ## 🚀 AWS deliverable
 
