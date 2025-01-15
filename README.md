@@ -34,20 +34,15 @@ Weather App lets you stay informed about the weather in any city across the coun
 ![Design image 1](login_mockup.jpg)
 ![Design image 2](weather_app_mockup.jpg)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Secure Login: Protect your account with HTTPS for safe and encrypted access.
+- State and City Selection: Easily choose the state and city you want to view for localized weather updates.
+- Favorite Cities: Save your favorite cities and have them remembered automatically the next time you log in.
+- Real-Time Data: Access up-to-the-minute details on temperature, humidity, wind speed, and UV index.
+- 5-Day Forecast: Plan ahead with a 5-day weather forecast.
+- Friends’ Cities: Check the weather conditions in your friends’ cities to stay connected and informed.
 
 ### Technologies
 
