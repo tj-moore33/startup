@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This Weather App is designed to keep users informed about weather conditions across various cities in the country. Key features include secure login, state and city selection for localized weather updates, saving favorite cities, real-time weather data, a 5-day forecast, and the ability to check weather conditions in friends' cities.
 
 
 ## 🚀 Specification Deliverable
