@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Page</title>
+    <style>
+        /* This will all be on my CSS page*/
+        body{
+            font-family:Arial, Helvetica, sans-serif;
+            margin:20px;
+        }
+        h1 {
+            color: black
+        }
+        .box{
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 8px;
+            width: fit-content;
+        }
+        .bold-text{
+            font-weight: bold;
+        }
+        select{
+            padding: 5px;
+            font-size: 16px;
+        }
+        .forecast{
+            display: inline-block;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 8px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Page</h1>
+    <div class="box">
+        <span class="bold-text">Find Your Weather</span>
+        <br>
+
+        <!-- I'll use JS to have the cities sort based off of what state is selected -->
+        <label for="stateDropdown">Select State:</label>
+        <select id="stateDropdown" name="dropdown" aria-label="Select State">
+            <option value="0">--</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Georgia">Georgia</option>
+            <option value="New York">New York</option>
+            <option value="Virginia">Virginia</option>
+        </select>
+        <br><br>
+
+        <label for="cityDropdown">Select City:</label>
+        <select id="cityDropdown" name="cityDropdown" aria-label="Select City">
+            <option value="0">--</option>
+            <option value="Anchorage">Anchorage</option>
+            <option value="Atlanta">Atlanta</option>
+            <option value="Rochester">Rochester</option>
+            <option value="Richmond">Richmond</option>
+        </select>
+    </div>
+    <div class="box">
+        <span class="bold-text">Current Weather</span>
+        <p>
+            <!-- This is all placeholder data -->
+            <strong>City:</strong> Atlanta<br>
+            <strong>Date:</strong> 1/27/25 <br>
+            <strong>Temperature:</strong> 43°F<br>
+            <strong>Wind Speed:</strong> 8 mph<br>
+            <strong>Humidity:</strong> 82%<br>
+            <strong>UV Index:</strong> 0.4
+        </p>
+    </div>
+    <div class="box">
+        <!-- this will have options for multiple metrics, temp, humidity, wind, etc -->
+        <span class = "bold-text">Temperature</span>
+        <br>
+        <img src="images/Graph placeholder.png" alt="placeholder graph">
+    </div>
+    <div class="box">
+        <span class = "bold-text">5-day Forecast</span>
+        <div class = "forecast-container">
+            <div class="forecast">
+                1/27/25<br>
+                <img src="images/Sunny.png" alt="Sunny" width="50" height="50"><br>
+                <strong>Temperature:</strong> 43°F<br>
+                <strong>Wind Speed:</strong> 8 mph<br>
+                <strong>Humidity:</strong> 82%<br>
+            </div>
+            <div class="forecast">
+                1/28/25<br>
+                <img src="images/Cloudy.png" alt="Cloudy" width="50" height="50"><br>
+                <strong>Temperature:</strong> 56°F<br>
+                <strong>Wind Speed:</strong> 9 mph<br>
+                <strong>Humidity:</strong> 54%<br>
+            </div>
+            <div class="forecast">
+                1/29/25<br>
+                <img src="images/Rainy.png" alt="Rainy" width="50" height="50"><br>
+                <strong>Temperature:</strong> 62°F<br>
+                <strong>Wind Speed:</strong> 10 mph<br>
+                <strong>Humidity:</strong> 49%<br>
+            </div>
+            <div class="forecast">
+                1/30/25<br>
+                <img src="images/Snowy.png" alt="Snowy" width="50" height="50"><br>
+                <strong>Temperature:</strong> 31°F<br>
+                <strong>Wind Speed:</strong> 9 mph<br>
+                <strong>Humidity:</strong> 47%<br>
+            </div>
+            <div class="forecast">
+                1/31/25<br>
+                <img src="images/Stormy.png" alt="Stormy" width="50" height="50"><br>
+                <strong>Temperature:</strong> 64°F<br>
+                <strong>Wind Speed:</strong> 11 mph<br>
+                <strong>Humidity:</strong> 72%<br>
+            </div>
+        </div>
+    
+    </div>
+</body>
+</html>
