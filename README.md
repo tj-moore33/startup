@@ -59,15 +59,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - Created my index.html(login) and weather.html(display) pages.
+- [ ] **Proper HTML element usage** - Use proper tags such as BODY, NAV, HEADER, FOOTER.
+- [x] **Links** - My pages contain links between them.
+- [x] **Text** - My pages contain text.
+- [x] **3rd party API placeholder** - My third party API will supply my weather data, placeholder currently present.
+- [x] **Images** - My weather page contains images. 
+- [x] **Login placeholder** - Index.html contains a login placeholder.
+- [x] **DB data placeholder** - My live weather data will come from my DB, placeholder present.
+- [x] **WebSocket placeholder** - Friends section of weather.html acting as placeholder. 
 
 ## 🚀 CSS deliverable
 
