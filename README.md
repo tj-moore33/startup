@@ -60,7 +60,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] **HTML pages** - Created my index.html(login) and weather.html(display) pages.
-- [ ] **Proper HTML element usage** - Use proper tags such as BODY, NAV, HEADER, FOOTER.
+- [x] **Proper HTML element usage** - Use proper tags such as BODY, NAV, HEADER, FOOTER.
 - [x] **Links** - My pages contain links between them.
 - [x] **Text** - My pages contain text.
 - [x] **3rd party API placeholder** - My third party API will supply my weather data, placeholder currently present.
