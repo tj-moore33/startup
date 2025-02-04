@@ -14,13 +14,18 @@
         <!-- This will populate with the entered username -->
         <h1>(username)'s Weather Page</h1>
         <nav>
-            <ul style="list-style: none; display: flex; gap: 10px; padding: 0;">
+            <ul>
                 <li><a href="#temperature">Temperature</a></li>
                 <li><a href="#forecast">5-day Forecast</a></li>
                 <li><a href="#friends">Your Friends</a></li>
-                <li><a href="https://github.com/tj-moore33/startup.git" target="_blank" rel="noopener noreferrer" class="link">GitHub</a></li>
+                <!-- <li><a href="https://github.com/tj-moore33/startup.git" target="_blank" rel="noopener noreferrer" class="link">GitHub</a></li> -->
             </ul>
-        </nav>
+            <div class="header-buttons">
+                <a href="https://github.com/tj-moore33/startup.git" target="_blank" rel="noopener noreferrer" class="github-button">GitHub</a>
+                <form class="logout-container" action="index.html">
+                    <input type="submit" value="Logout" class="logout-button">
+                </form>
+            </div>
     </header>
     <div class="box">
         <span class="bold-text">Find Your Weather</span>
@@ -117,12 +122,7 @@
         </p>
     </div>
     <footer>
-        <!-- Make this a footer -->
-        <form class="logout-container" action="index.html">
-            <!-- Click Logout to navigate to the previous page -->
-            <p><input type="submit" value="Logout"></p>
-        </form>
+
     </footer>
 </body>
-
 </html>

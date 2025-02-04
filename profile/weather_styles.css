@@ -11,23 +11,82 @@ header {
     color: #fff;
     padding: 20px;
     text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
+
 
 header h1 {
     margin: 0;
     font-size: 28px;
 }
 
+.header-buttons {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;  /* Stack the buttons vertically */
+    align-items: flex-end;   /* Align to the right */
+    gap: 10px;               /* Add spacing between buttons */
+}
+
+/* GitHub Button */
+.github-button {
+    background-color: #1976d2;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    text-align: center;
+    border: none;
+    display: inline-block;
+}
+
+.github-button:hover {
+    background-color: #1565c0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Logout Button */
+.logout-button {
+    background-color: #1976d2; /* Red color */
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #1565c0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
 nav ul {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    list-style: none;
+    gap: 10px;
     padding: 0;
-    margin: 10px 0 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin:0;
 }
 
 nav ul li {
-    list-style: none;
+    flex-shrink: 0;
 }
 
 nav ul li a {
@@ -35,6 +94,7 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 nav ul li a:hover {
@@ -50,10 +110,16 @@ nav ul li a:hover {
     max-width: 800px;
     width: 90%;
 }
+
+.box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+}
 .bold-text {
     font-size: 18px;
     font-weight: bold;
-    color: #4CAF50;
+    color: #1976d2;
 }
 
 label {
@@ -64,6 +130,14 @@ select {
     padding: 5px;
     font-size: 14px;
     margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    border-color: #1976d2;
+    outline: none;
 }
 
 #temperature p { 
@@ -82,7 +156,7 @@ select {
     border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
-    flex: 1 1 calc(20% - 10);
+    flex: 1 1 calc(20% - 10px);
 }
 
 .forecast img {
@@ -94,15 +168,15 @@ select {
 }
 
 footer  {
-    background-color: #4CAF50;
+    background-color: #1976d2;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 15px 20px;
     margin-top: 20px;
 }
 
-.logout-container input[type="submit"] {
-    background-color: #45a049;
+.logout-container input[type="submit"]:hover {
+    background-color: #1565c0;
     border: none;
     color: white;
     padding: 8px 16px;
@@ -111,14 +185,17 @@ footer  {
 }
 
 .logout-container input[type="submit"]:hover {
-    background-color: #3e8e41;
+    background-color: #1976d2;
 }
 
 .link {
     color: white;
     text-decoration: none;
     margin-top: 10px;
+    font-weight: bold;
+    transition: nowrap;
     display: inline-block;
+    padding: 5px 10px;
 }
 
 .link:hover {
