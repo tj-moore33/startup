@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/title.ico">
+    <link rel="stylesheet" href="../weather_styles.css">
+    <title>Weather Page</title>
+</head>
+
+<body>
+    <header>
+        <!-- This will populate with the entered username -->
+        <h1><span id="username">Weather Watcher</span>'s Weather Page</h1>
+        <nav>
+            <ul>
+                <li><a href="../current/current.html">Today</a></li>
+                <li><a href="../forecast/forecast.html">5-day Forecast</a></li>
+                <li><a href="../other.html/">The World</a></li>
+            </ul>
+            <div class="header-buttons">
+                <a href="https://github.com/tj-moore33/startup.git" target="_blank" rel="noopener noreferrer" class="github-button">GitHub</a>
+                <form class="logout-container" action="index.html">
+                    <input type="submit" value="Logout" class="logout-button">
+                </form>
+            </div>
+    </header> 
+    <!-- Im gonna change this to be weather around the world -->
+    <div class="box" id="friends">
+        <span class="bold-text">Your Friends</span>
+        <p>
+            <!-- placeholder for WedSocket -->
+            <strong>John:</strong> Viewed - Anchorage, AL<br>
+            <strong>Caio:</strong> Viewed - Atlanta, GA<br>
+            <strong>Jaeli:</strong> Viewed - Rochester, NY<br>
+            <strong>Harrison:</strong> Viewed - Richmond, VA<br>
+        </p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Thomas Moore. All Rights Reserved</p>
+    </footer>
+</body>
