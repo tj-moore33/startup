@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/title.ico">
+    <link rel="stylesheet" href="weather_styles.css">
+    <title>Weather Page</title>
+</head>
+
+<body>
+    <header>
+        <!-- This will populate with the entered username -->
+        <h1><span id="username">Weather Watcher</span>'s Weather Page</h1>
+        <nav>
+            <ul>
+                <li><a href="#temperature">Temperature</a></li>
+                <li><a href="#forecast">5-day Forecast</a></li>
+                <li><a href="#friends">Your Friends</a></li>
+            </ul>
+            <div class="header-buttons">
+                <a href="https://github.com/tj-moore33/startup.git" target="_blank" rel="noopener noreferrer" class="github-button">GitHub</a>
+                <form class="logout-container" action="index.html">
+                    <input type="submit" value="Logout" class="logout-button">
+                </form>
+            </div>
+    </header>
+    <div class="box">
+        <span class="bold-text">Find Your Weather</span>
+        <br>
+
+        <!-- I'll use JS to have the cities sort based off of what state is selected -->
+        <label for="stateDropdown">Select State:</label>
+        <select id="stateDropdown" name="dropdown" aria-label="Select State">
+            <option value="0">--</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Georgia">Georgia</option>
+            <option value="New York">New York</option>
+            <option value="Virginia">Virginia</option>
+        </select>
+        <br><br>
+
+        <label for="cityDropdown">Select City:</label>
+        <select id="cityDropdown" name="cityDropdown" aria-label="Select City">
+            <option value="0">--</option>
+            <option value="Anchorage">Anchorage</option>
+            <option value="Atlanta">Atlanta</option>
+            <option value="Rochester">Rochester</option>
+            <option value="Richmond">Richmond</option>
+        </select>
+    </div>
+    <div class="box" id="temperature">
+        <span class="bold-text">Current Weather</span>
+        <p>
+            <!-- this data will come from my 3rd party API -->
+            <!-- This is all placeholder data -->
+            <strong>City:</strong> Atlanta<br>
+            <strong>Date:</strong> 1/27/25 <br>
+            <strong>Temperature:</strong> 43°F<br>
+            <strong>Wind Speed:</strong> 8 mph<br>
+            <strong>Humidity:</strong> 82%<br>
+            <strong>UV Index:</strong> 0.4
+        </p>
+    </div>
+    <div class="box">
+        <!-- this will have options for multiple metrics, temp, humidity, wind, etc -->
+        <!-- this data will come from my DB -->
+        <span class="bold-text">Temperature</span>
+        <br>
+        <img src="images/Graph placeholder.png" alt="placeholder graph">
+    </div>
+    <div class="box">
+        <span class="bold-text">5-day Forecast</span>
+        <div class="forecast-container" id="forecast">
+            <div class="forecast">
+                1/27/25<br>
+                <img src="images/Sunny.png" alt="Sunny" width="50" height="50"><br>
+                <strong>Temperature:</strong> 43°F<br>
+                <strong>Wind Speed:</strong> 8 mph<br>
+                <strong>Humidity:</strong> 82%<br>
+            </div>
+            <div class="forecast">
+                1/28/25<br>
+                <img src="images/Cloudy.png" alt="Cloudy" width="50" height="50"><br>
+                <strong>Temperature:</strong> 56°F<br>
+                <strong>Wind Speed:</strong> 9 mph<br>
+                <strong>Humidity:</strong> 54%<br>
+            </div>
+            <div class="forecast">
+                1/29/25<br>
+                <img src="images/Rainy.png" alt="Rainy" width="50" height="50"><br>
+                <strong>Temperature:</strong> 62°F<br>
+                <strong>Wind Speed:</strong> 7 mph<br>
+                <strong>Humidity:</strong> 49%<br>
+            </div>
+            <div class="forecast">
+                1/30/25<br>
+                <img src="images/Snowy.png" alt="Snowy" width="50" height="50"><br>
+                <strong>Temperature:</strong> 31°F<br>
+                <strong>Wind Speed:</strong> 9 mph<br>
+                <strong>Humidity:</strong> 47%<br>
+            </div>
+            <div class="forecast">
+                1/31/25<br>
+                <img src="images/Stormy.png" alt="Stormy" width="50" height="50"><br>
+                <strong>Temperature:</strong> 64°F<br>
+                <strong>Wind Speed:</strong> 6 mph<br>
+                <strong>Humidity:</strong> 72%<br>
+            </div>
+        </div>
+    </div>
+    <div class="box" id="friends">
+        <span class="bold-text">Your Friends</span>
+        <p>
+            <!-- placeholder for WedSocket -->
+            <strong>John:</strong> Viewed - Anchorage, AL<br>
+            <strong>Caio:</strong> Viewed - Atlanta, GA<br>
+            <strong>Jaeli:</strong> Viewed - Rochester, NY<br>
+            <strong>Harrison:</strong> Viewed - Richmond, VA<br>
+        </p>
+    </div>
+    <footer>
+        <p>&copy; 2025 Thomas Moore. All Rights Reserved</p>
+    </footer>
+</body>
+</html>

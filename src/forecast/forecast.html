@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../../public/images/title.ico">
+    <link rel="stylesheet" href="../app.css">
+    <title>Weather Page</title>
+</head>
+
+<body>
+    <header>
+        <!-- This will populate with the entered username -->
+        <h1><span id="username">Weather Watcher</span>'s Weather Page</h1>
+        <nav>
+            <ul>
+                <li><a href="../current/current.html">Today</a></li>
+                <li><a href="../forecast/forecast.html">5-day Forecast</a></li>
+                <li><a href="../world/world.html">The World</a></li>
+            </ul>
+            <div class="header-buttons">
+                <a href="https://github.com/tj-moore33/startup.git" target="_blank" rel="noopener noreferrer" class="github-button">GitHub</a>
+                <form class="logout-container" action="../../index.html">
+                    <input type="submit" value="Logout" class="logout-button">
+                </form>
+            </div>
+    </header>
+
+    <div class="box">
+        <span class="bold-text">5-day Forecast</span>
+        <div class="forecast-container" id="forecast">
+            <div class="forecast">
+                1/27/25<br>
+                <img src="../../public/images/Sunny.png" alt="Sunny" width="50" height="50"><br>
+                <strong>Temperature:</strong> 43°F<br>
+                <strong>Wind Speed:</strong> 8 mph<br>
+                <strong>Humidity:</strong> 82%<br>
+            </div>
+            <div class="forecast">
+                1/28/25<br>
+                <img src="../../public/images/Cloudy.png" alt="Cloudy" width="50" height="50"><br>
+                <strong>Temperature:</strong> 56°F<br>
+                <strong>Wind Speed:</strong> 9 mph<br>
+                <strong>Humidity:</strong> 54%<br>
+            </div>
+            <div class="forecast">
+                1/29/25<br>
+                <img src="../../public/images/Rainy.png" alt="Rainy" width="50" height="50"><br>
+                <strong>Temperature:</strong> 62°F<br>
+                <strong>Wind Speed:</strong> 7 mph<br>
+                <strong>Humidity:</strong> 49%<br>
+            </div>
+            <div class="forecast">
+                1/30/25<br>
+                <img src="../../public/images/Snowy.png" alt="Snowy" width="50" height="50"><br>
+                <strong>Temperature:</strong> 31°F<br>
+                <strong>Wind Speed:</strong> 9 mph<br>
+                <strong>Humidity:</strong> 47%<br>
+            </div>
+            <div class="forecast">
+                1/31/25<br>
+                <img src="../../public/images/Stormy.png" alt="Stormy" width="50" height="50"><br>
+                <strong>Temperature:</strong> 64°F<br>
+                <strong>Wind Speed:</strong> 6 mph<br>
+                <strong>Humidity:</strong> 72%<br>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Thomas Moore. All Rights Reserved</p>
+    </footer>
+</body>
