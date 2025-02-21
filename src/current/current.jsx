@@ -24,12 +24,59 @@ export function Current() {
   ];
 
 //   my api will expand the city options
-  const cityOptions = {
-    California: ["Los Angeles", "San Francisco", "San Diego"],
-    Texas: ["Houston", "Dallas", "Austin"],
-    NewYork: ["New York City", "Buffalo", "Rochester"],
-    Florida: ["Miami", "Orlando", "Tampa"],
-  };
+const cityOptions = {
+  Alabama: ["Birmingham", "Montgomery", "Mobile"],
+  Alaska: ["Anchorage", "Juneau", "Fairbanks"],
+  Arizona: ["Phoenix", "Tucson", "Mesa"],
+  Arkansas: ["Little Rock", "Fort Smith", "Fayetteville"],
+  California: ["Los Angeles", "San Francisco", "San Diego"],
+  Colorado: ["Denver", "Colorado Springs", "Aurora"],
+  Connecticut: ["Hartford", "New Haven", "Stamford"],
+  Delaware: ["Wilmington", "Dover", "Newark"],
+  Florida: ["Miami", "Orlando", "Tampa"],
+  Georgia: ["Atlanta", "Savannah", "Augusta"],
+  Hawaii: ["Honolulu", "Hilo", "Kailua"],
+  Idaho: ["Boise", "Meridian", "Nampa"],
+  Illinois: ["Chicago", "Springfield", "Peoria"],
+  Indiana: ["Indianapolis", "Fort Wayne", "Evansville"],
+  Iowa: ["Des Moines", "Cedar Rapids", "Davenport"],
+  Kansas: ["Wichita", "Topeka", "Overland Park"],
+  Kentucky: ["Louisville", "Lexington", "Bowling Green"],
+  Louisiana: ["New Orleans", "Baton Rouge", "Shreveport"],
+  Maine: ["Portland", "Lewiston", "Bangor"],
+  Maryland: ["Baltimore", "Annapolis", "Frederick"],
+  Massachusetts: ["Boston", "Worcester", "Springfield"],
+  Michigan: ["Detroit", "Grand Rapids", "Lansing"],
+  Minnesota: ["Minneapolis", "St. Paul", "Rochester"],
+  Mississippi: ["Jackson", "Gulfport", "Hattiesburg"],
+  Missouri: ["Kansas City", "St. Louis", "Springfield"],
+  Montana: ["Billings", "Missoula", "Great Falls"],
+  Nebraska: ["Omaha", "Lincoln", "Bellevue"],
+  Nevada: ["Las Vegas", "Reno", "Henderson"],
+  "New Hampshire": ["Manchester", "Nashua", "Concord"],
+  "New Jersey": ["Newark", "Jersey City", "Trenton"],
+  "New Mexico": ["Albuquerque", "Santa Fe", "Las Cruces"],
+  "New York": ["New York City", "Buffalo", "Rochester"],
+  "North Carolina": ["Charlotte", "Raleigh", "Greensboro"],
+  "North Dakota": ["Fargo", "Bismarck", "Grand Forks"],
+  Ohio: ["Columbus", "Cleveland", "Cincinnati"],
+  Oklahoma: ["Oklahoma City", "Tulsa", "Norman"],
+  Oregon: ["Portland", "Salem", "Eugene"],
+  Pennsylvania: ["Philadelphia", "Pittsburgh", "Harrisburg"],
+  "Rhode Island": ["Providence", "Warwick", "Cranston"],
+  "South Carolina": ["Charleston", "Columbia", "Greenville"],
+  "South Dakota": ["Sioux Falls", "Rapid City", "Aberdeen"],
+  Tennessee: ["Nashville", "Memphis", "Knoxville"],
+  Texas: ["Houston", "Dallas", "Austin"],
+  Utah: ["Salt Lake City", "Provo", "Ogden"],
+  Vermont: ["Burlington", "Montpelier", "Rutland"],
+  Virginia: ["Richmond", "Virginia Beach", "Norfolk"],
+  Washington: ["Seattle", "Spokane", "Tacoma"],
+  "West Virginia": ["Charleston", "Huntington", "Morgantown"],
+  Wisconsin: ["Milwaukee", "Madison", "Green Bay"],
+  Wyoming: ["Cheyenne", "Casper", "Laramie"]
+};
+
 
   // Function to generate random weather data
   const generateRandomWeather = () => {
