@@ -1,53 +1,103 @@
-import React from 'react';
-import './current.css';
+import React, { useState, useEffect } from 'react';
+import './current.css'; './app.css'
 
 export function Current() {
+  const [selectedState, setSelectedState] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+  const [weatherData, setWeatherData] = useState({
+    temperature: 0,
+    windSpeed: 0,
+    humidity: 0,
+    uvIndex: 0,
+  });
+
+  const [activeTab, setActiveTab] = useState('temperature'); // Default
+
+  const statesList = [
+    "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", 
+    "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", 
+    "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", 
+    "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", 
+    "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", 
+    "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", 
+    "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+  ];
+
+//   my api will expand the city options
+  const cityOptions = {
+    California: ["Los Angeles", "San Francisco", "San Diego"],
+    Texas: ["Houston", "Dallas", "Austin"],
+    NewYork: ["New York City", "Buffalo", "Rochester"],
+    Florida: ["Miami", "Orlando", "Tampa"],
+  };
+
+  // Function to generate random weather data
+  const generateRandomWeather = () => {
+    return {
+      temperature: (Math.random() * (100 - 30) + 30).toFixed(1), // 30°F to 100°F
+      windSpeed: (Math.random() * (25 - 1) + 1).toFixed(1), // 1 to 25 mph
+      humidity: Math.floor(Math.random() * (100 - 20) + 20), // 20% to 100%
+      uvIndex: (Math.random() * (11 - 0) + 0).toFixed(1), // 0 to 11
+    };
+  };
+
+  const handleStateChange = (event) => {
+    setSelectedState(event.target.value);
+    setSelectedCity('');
+  };
+
+  const handleCityChange = (event) => {
+    setSelectedCity(event.target.value);
+    setWeatherData(generateRandomWeather()); // Generate rando data
+  };
+
   return (
     <main className='container-fluid bg-secondary text-center'>
-          <div class="box">
-        <span class="bold-text">Find Your Weather</span>
-        <br/>
+      <div className="weather-container">
+        <div className="box">
+          <span className="bold-text">Find Your Weather</span>
+          <br />
+          <label htmlFor="stateDropdown">Select State:</label>
+          <select id="stateDropdown" value={selectedState} onChange={handleStateChange}>
+            <option value="">--</option>
+            {statesList.map((state) => (
+              <option key={state} value={state}>{state}</option>
+            ))}
+          </select>
+          <br /><br />
+          <label htmlFor="cityDropdown">Select City:</label>
+          <select id="cityDropdown" value={selectedCity} onChange={handleCityChange} disabled={!selectedState}>
+            <option value="">--</option>
+            {selectedState && cityOptions[selectedState]?.map((city) => (
+              <option key={city} value={city}>{city}</option>
+            ))}
+          </select>
+        </div>
 
-        {/* <!-- I'll use JS to have the cities sort based off of what state is selected --> */}
-        <label for="stateDropdown">Select State:</label>
-        <select id="stateDropdown" name="dropdown" aria-label="Select State">
-            <option value="0">--</option>
-            <option value="Alaska">Alaska</option>
-            <option value="Georgia">Georgia</option>
-            <option value="New York">New York</option>
-            <option value="Virginia">Virginia</option>
-        </select>
-        <br/><br/>
+        <div className="box">
+          <span className="bold-text">Current Weather</span>
+          <p>
+            <strong>City:</strong> {selectedCity || 'Select a city'} <br />
+            <strong>Date:</strong> {new Date().toLocaleDateString()} <br />
+            <strong>Temperature:</strong> {weatherData.temperature}°F<br />
+            <strong>Wind Speed:</strong> {weatherData.windSpeed} mph<br />
+            <strong>Humidity:</strong> {weatherData.humidity}%<br />
+            <strong>UV Index:</strong> {weatherData.uvIndex}
+          </p>
+        </div>
+      </div>
 
-        <label for="cityDropdown">Select City:</label>
-        <select id="cityDropdown" name="cityDropdown" aria-label="Select City">
-            <option value="0">--</option>
-            <option value="Anchorage">Anchorage</option>
-            <option value="Atlanta">Atlanta</option>
-            <option value="Rochester">Rochester</option>
-            <option value="Richmond">Richmond</option>
-        </select>
-    </div>
-    <div class="box" id="temperature">
-        <span class="bold-text">Current Weather</span>
-        <p>
-            {/* <!-- this data will come from my 3rd party API -->
-            <!-- This is all placeholder data --> */}
-            <strong>City:</strong> Atlanta<br/>
-            <strong>Date:</strong> 1/27/25 <br/>
-            <strong>Temperature:</strong> 43°F<br/>
-            <strong>Wind Speed:</strong> 8 mph<br/>
-            <strong>Humidity:</strong> 82%<br/>
-            <strong>UV Index:</strong> 0.4
-        </p>
-    </div>
-    <div class="box">
-        {/* <!-- this will have options for multiple metrics, temp, humidity, wind, etc --> */}
-        {/* <!-- this data will come from my DB --> */}
-        <span class="bold-text">Temperature</span>
-        <br/>
-        <img src="../images/Graph placeholder.png" alt="placeholder graph"/>
-    </div>
+      {/* this will all be real data when the api is put in */}
+      <div className="box temperature-box">
+        <div className="tab-buttons">
+          <button className={activeTab === 'temperature' ? 'active' : ''} onClick={() => setActiveTab('temperature')}>Temperature</button>
+          <button className={activeTab === 'humidity' ? 'active' : ''} onClick={() => setActiveTab('humidity')}>Humidity</button>
+          <button className={activeTab === 'windSpeed' ? 'active' : ''} onClick={() => setActiveTab('windSpeed')}>Wind Speed</button>
+        </div>
+        <br />
+
+        <img src={`/images/${activeTab}-graph.png`} alt={`${activeTab} graph`} />
+      </div>
     </main>
   );
 }
