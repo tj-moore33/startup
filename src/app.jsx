@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { Login } from './login/login';
 import { Current } from './current/current';
 import { Forecast } from './forecast/forecast';
@@ -30,13 +30,13 @@ export default function App() {
         <h1><span id="username">{formatPossessive(username)}</span> Weather Watcher Page</h1>
           <nav>
             <ul>
-              <li><NavLink className="nav-link active" to='login'>Home</NavLink></li>
               <li><NavLink className='nav-link' to='current'>Today</NavLink></li>
               <li><NavLink className='nav-link' to='forecast'>5-Day Forecast</NavLink></li>
               <li><NavLink className='nav-link' to='world'>The World</NavLink></li>
             </ul>
             <div className="header-buttons">
               <a href="https://github.com/tj-moore33/startup.git" target="_blank" rel="noopener noreferrer" className="github-button">GitHub</a>
+              <LogoutButton /> 
             </div>
           </nav>
         </header>
@@ -55,8 +55,4 @@ export default function App() {
       </div>
     </BrowserRouter>
   );
-}
-
-function NotFound() {
-  return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
 }
