@@ -10,7 +10,7 @@ function LogoutButton() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('username'); // remove username from storage
+    localStorage.clear(); 
     navigate('/'); // redirect to login page
   };
 

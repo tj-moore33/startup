@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './current.css';
 
 export function Current({ weatherData, updateWeather }) {
@@ -69,14 +69,26 @@ export function Current({ weatherData, updateWeather }) {
     Wyoming: ["Cheyenne", "Casper", "Laramie"]
   };
 
+  useEffect(() => {
+    const savedState = localStorage.getItem('selectedState');
+    const savedCity = localStorage.getItem('selectedCity');
+    if (savedState) setSelectedState(savedState);
+    if (savedCity) setSelectedCity(savedCity);
+  }, []);
+
   const handleStateChange = (event) => {
-    setSelectedState(event.target.value);
+    const newState = event.target.value;
+    setSelectedState(newState);
     setSelectedCity('');
+    localStorage.setItem('selectedState', newState); // Save to localStorage
+    localStorage.removeItem('selectedCity'); // Clear previous city selection
   };
 
   const handleCityChange = (event) => {
-    setSelectedCity(event.target.value);
-    updateWeather(); 
+    const newCity = event.target.value;
+    setSelectedCity(newCity);
+    localStorage.setItem('selectedCity', newCity); // Save to localStorage
+    updateWeather(); // Update weather when a new city is selected
   };
 
   return (
