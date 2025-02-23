@@ -10,8 +10,8 @@ function LogoutButton() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('username'); // Remove username from localStorage
-    navigate('/'); // Redirect to login page
+    localStorage.removeItem('username'); // remove username from storage
+    navigate('/'); // redirect to login page
   };
 
   return (
@@ -24,7 +24,32 @@ function LogoutButton() {
 export default function App() {
   const [username, setUsername] = useState('');
 
-  // Get username from localStorage 
+  //weather shared between Current.js and Forecast.js
+  const [weatherData, setWeatherData] = useState({
+    temperature: 0,
+    windSpeed: 0,
+    humidity: 0,
+    uvIndex: 0,
+    weatherType: 'Sunny' //default
+  });
+
+  // generate random weather data
+  const generateRandomWeather = () => {
+    const weatherTypes = ["Sunny", "Cloudy", "Rainy", "Snowy", "Stormy"];
+    return {
+      temperature: (Math.random() * (100 - 30) + 30).toFixed(1),
+      windSpeed: (Math.random() * (25 - 1) + 1).toFixed(1),
+      humidity: Math.floor(Math.random() * (100 - 20) + 20),
+      uvIndex: (Math.random() * (11 - 0) + 0).toFixed(1),
+      weatherType: weatherTypes[Math.floor(Math.random() * weatherTypes.length)] 
+    };
+  };
+
+  const updateWeather = () => {
+    setWeatherData(generateRandomWeather());
+  };
+
+  //get username
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
     if (storedUsername) {
@@ -32,9 +57,9 @@ export default function App() {
     }
   }, []);
 
-  // Format the username as possessive
+  //possesive format
   const formatPossessive = (name) => {
-    if (!name) return "Weather Watcher"; // Default if username is empty
+    if (!name) return "";
     return name.endsWith("s") ? `${name}'` : `${name}'s`;
   };
 
@@ -58,8 +83,8 @@ export default function App() {
 
         <Routes>
           <Route path='/' element={<Login />} exact />
-          <Route path='/current' element={<Current />} />
-          <Route path='/forecast' element={<Forecast />} />
+          <Route path='/current' element={<Current weatherData={weatherData} updateWeather={updateWeather} />} />
+          <Route path='/forecast' element={<Forecast weatherData={weatherData} />} />
           <Route path='/world' element={<World />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

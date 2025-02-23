@@ -148,24 +148,25 @@ select:focus {
 
 .forecast-container {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 10px;
-    justify-content: flex-start;
-    overflow-x: auto;
-    scroll-padding-left: 20px;
-    padding-left: 10px;
-    margin-left: 10px;
+    justify-content: space-between; 
+    gap: 15px; 
+    padding: 20px;
+    max-width: 100%;
+    flex-wrap: nowrap; 
 }
 
 .forecast {
     background-color: #f9f9f9;
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 20px;
     text-align: center;
-    flex: 1 1 calc(18% - 10px);
-    min-width: 160px;
-    max-width: 200px;
+    flex: 1 1 0; 
+    box-sizing: border-box; 
+    min-width: 180px; 
+    max-width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 .forecast img {
     margin: 5px 0;
@@ -189,7 +190,7 @@ footer  {
     width: 100%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 100px) {
     .forecast-container {
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -278,7 +279,7 @@ footer  {
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
+@media (max-width: 100px) {
     .login-wrapper {
         width: 90%;
         padding: 20px;
