@@ -38,9 +38,9 @@ export function Forecast({ weatherData }) {
     return {
       date: date.toLocaleDateString(),
       weather: weather,
-      temperature: (parseFloat(weatherData.temperature) + (Math.random() * 10 - 5)).toFixed(1),
-      windSpeed: (parseFloat(weatherData.windSpeed) + (Math.random() * 3 - 1)).toFixed(1),
-      humidity: Math.max(10, Math.min(100, parseInt(weatherData.humidity) + Math.floor(Math.random() * 10 - 5))),
+      temperature: Math.round(parseInt(weatherData.temperature) + (Math.random() * 10 - 5)),
+      windSpeed: Math.round(parseInt(weatherData.windSpeed) + (Math.random() * 3 - 1)),
+      humidity: Math.round(Math.max(10, Math.min(100, parseInt(weatherData.humidity) + Math.floor(Math.random() * 10 - 5)))),
     };
   });
 

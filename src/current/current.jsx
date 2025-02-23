@@ -107,10 +107,10 @@ export function Current({ weatherData, updateWeather }) {
           <p>
             <strong>City:</strong> {selectedCity || 'Select a city'} <br />
             <strong>Date:</strong> {new Date().toLocaleDateString()} <br />
-            <strong>Temperature:</strong> {weatherData.temperature}°F<br />
-            <strong>Wind Speed:</strong> {weatherData.windSpeed} mph<br />
-            <strong>Humidity:</strong> {weatherData.humidity}%<br />
-            <strong>UV Index:</strong> {weatherData.uvIndex}
+            <strong>Temperature:</strong> {Math.round(weatherData.temperature)}°F<br />
+            <strong>Wind Speed:</strong> {Math.round(weatherData.windSpeed)} mph<br />
+            <strong>Humidity:</strong> {Math.round(weatherData.humidity)}%<br />
+            <strong>UV Index:</strong> {Math.round(weatherData.uvIndex)}
           </p>
         </div>
       </div>
