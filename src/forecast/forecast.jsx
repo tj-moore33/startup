@@ -46,7 +46,7 @@ export function Forecast({ weatherData }) {
 
   return (
     <main className="container-fluid bg-secondary text-center">
-      <div className="box">
+      <div className="forecast-box">
         <span className="bold-text">5-day Forecast</span>
         <div className="forecast-container">
           {forecastData.map((day, index) => (

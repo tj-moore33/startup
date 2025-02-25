@@ -4,7 +4,7 @@ import { Login } from './login/login';
 import { Current } from './current/current';
 import { Forecast } from './forecast/forecast';
 import { World } from './world/world';
-import './app.css';
+import './app.css'; '/forecast.css';
 
 function LogoutButton({ setUsername }) {
   const navigate = useNavigate();
