@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../app.css';
 
-export function Login() {
-  const [username, setUsername] = useState('');
+export function Login({ setUsername }) {
+  const [localUsername, setLocalUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -11,16 +11,17 @@ export function Login() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    if (!username.trim() || !password.trim()) {
+    if (!localUsername.trim() || !password.trim()) {
       setError('Username and password are required.');
       return;
     }
 
-    // Store the username and simulate login
+    //store username and simulate login
     localStorage.setItem('userToken', 'mock-auth-token');
-    localStorage.setItem('username', username); // Store the username
-    
-    navigate('/current'); // Redirect after login
+    localStorage.setItem('username', localUsername);
+    setUsername(localUsername); 
+
+    navigate('/current'); //redirect after login
   }
 
   return (
@@ -35,8 +36,8 @@ export function Login() {
             <input 
               type="text" 
               placeholder="Username" 
-              value={username} 
-              onChange={(e) => setUsername(e.target.value)} 
+              value={localUsername} 
+              onChange={(e) => setLocalUsername(e.target.value)} 
               required
             />
           </p>

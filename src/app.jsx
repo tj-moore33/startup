@@ -6,12 +6,14 @@ import { Forecast } from './forecast/forecast';
 import { World } from './world/world';
 import './app.css';
 
-function LogoutButton() {
+function LogoutButton({ setUsername }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.clear(); 
-    navigate('/'); // redirect to login page
+    localStorage.clear(); // ✅ Clears all stored data (username, state, city)
+    setUsername(''); // ✅ Clears username from state
+    navigate('/'); // ✅ Redirect to login page
+    window.location.reload(); // ✅ Ensures UI fully resets
   };
 
   return (
@@ -24,16 +26,16 @@ function LogoutButton() {
 export default function App() {
   const [username, setUsername] = useState('');
 
-  //weather shared between Current.js and Forecast.js
+  // Shared weather state between Current.js and Forecast.js
   const [weatherData, setWeatherData] = useState({
     temperature: 0,
     windSpeed: 0,
     humidity: 0,
     uvIndex: 0,
-    weatherType: 'Sunny' //default
+    weatherType: 'Sunny' // Default
   });
 
-  // generate random weather data
+  // Generate random weather data
   const generateRandomWeather = () => {
     const weatherTypes = ["Sunny", "Cloudy", "Rainy", "Snowy", "Stormy"];
     return {
@@ -49,7 +51,7 @@ export default function App() {
     setWeatherData(generateRandomWeather());
   };
 
-  //get username
+  // Get username from localStorage on page load
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
     if (storedUsername) {
@@ -57,7 +59,7 @@ export default function App() {
     }
   }, []);
 
-  //possesive format
+  // Possessive format for username
   const formatPossessive = (name) => {
     if (!name) return "";
     return name.endsWith("s") ? `${name}'` : `${name}'s`;
@@ -76,13 +78,13 @@ export default function App() {
             </ul>
             <div className="header-buttons">
               <a href="https://github.com/tj-moore33/startup.git" target="_blank" rel="noopener noreferrer" className="github-button">GitHub</a>
-              <LogoutButton />
+              <LogoutButton setUsername={setUsername} />
             </div>
           </nav>
         </header>
 
         <Routes>
-          <Route path='/' element={<Login />} exact />
+          <Route path='/' element={<Login setUsername={setUsername} />} exact />
           <Route path='/current' element={<Current weatherData={weatherData} updateWeather={updateWeather} />} />
           <Route path='/forecast' element={<Forecast weatherData={weatherData} />} />
           <Route path='/world' element={<World />} />
@@ -100,3 +102,4 @@ export default function App() {
 function NotFound() {
   return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
 }
+
