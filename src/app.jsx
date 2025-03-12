@@ -4,16 +4,18 @@ import { Login } from './login/login';
 import { Current } from './current/current';
 import { Forecast } from './forecast/forecast';
 import { World } from './world/world';
-import './app.css'; '/forecast.css';
+import { useLocation } from 'react-router-dom';
+import './app.css';
+import './forecast/forecast.css';
 
 function LogoutButton({ setUsername }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.clear(); // ✅ Clears all stored data (username, state, city)
-    setUsername(''); // ✅ Clears username from state
-    navigate('/'); // ✅ Redirect to login page
-    window.location.reload(); // ✅ Ensures UI fully resets
+    localStorage.clear(); // clears all stored data (username, state, city)
+    setUsername(''); // clears username from state
+    navigate('/'); // redirect to login page
+    window.location.reload(); // ensures UI fully resets
   };
 
   return (
@@ -61,7 +63,7 @@ export default function App() {
 
   // Possessive format for username
   const formatPossessive = (name) => {
-    if (!name) return "";
+    if (!name || typeof name !=='string') return "";
     return name.endsWith("s") ? `${name}'` : `${name}'s`;
   };
 

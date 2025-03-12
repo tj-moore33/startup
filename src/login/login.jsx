@@ -19,7 +19,7 @@ export function Login({ setUsername }) {
     //store username and simulate login
     localStorage.setItem('userToken', 'mock-auth-token');
     localStorage.setItem('username', localUsername);
-    setUsername(localUsername); 
+    setUsername(username); 
 
     navigate('/current'); //redirect after login
   }
