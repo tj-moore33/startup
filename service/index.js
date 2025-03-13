@@ -1,6 +1,9 @@
+
+require('dotenv').config({ path: './weather.env' });
+const express = require('express');
+const axios = require('axios');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
-const express = require('express');
 const uuid = require('uuid');
 
 const app = express();
@@ -15,14 +18,18 @@ const port = process.argv.length > 2 ? process.argv[2] : 4000;
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.static('public')); // Frontend files
+app.use(express.static('public')); // Serve frontend files
 
-// API Router
+// Create API Router and mount it before defining any routes
 const apiRouter = express.Router();
-app.use(`/api`, apiRouter);
+app.use('/api', apiRouter);
 
+// Test Route
+apiRouter.get('/', (req, res) => {
+  res.send({ msg: 'API is working!' });
+});
 
-// Register User
+// Define other API routes after apiRouter is defined
 apiRouter.post('/auth/create', async (req, res) => {
   if (await findUser('email', req.body.email)) {
     res.status(409).send({ msg: 'User already exists' });
@@ -33,7 +40,6 @@ apiRouter.post('/auth/create', async (req, res) => {
   }
 });
 
-// Login User
 apiRouter.post('/auth/login', async (req, res) => {
   const user = await findUser('email', req.body.email);
   if (user && (await bcrypt.compare(req.body.password, user.password))) {
@@ -45,12 +51,9 @@ apiRouter.post('/auth/login', async (req, res) => {
   }
 });
 
-// Logout User
 apiRouter.delete('/auth/logout', async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
-  if (user) {
-    delete user.token;
-  }
+  if (user) delete user.token;
   res.clearCookie(authCookieName);
   res.status(204).end();
 });
@@ -65,15 +68,17 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-
-// Update User's Weather Preference
-apiRouter.post('/weather', verifyAuth, (req, res) => {
-  const user = findUser('token', req.cookies[authCookieName]);
+apiRouter.post('/weather', verifyAuth, async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
+    const weather = await fetchWeather(req.body.city);
+    if (!weather) {
+      return res.status(500).send({ msg: 'Failed to fetch weather data' });
+    }
     weatherData[user.email] = {
       city: req.body.city,
       state: req.body.state,
-      weather: generateRandomWeather(),
+      weather,
     };
     res.send(weatherData[user.email]);
   } else {
@@ -81,9 +86,8 @@ apiRouter.post('/weather', verifyAuth, (req, res) => {
   }
 });
 
-// Get User's Weather Preference
-apiRouter.get('/weather', verifyAuth, (req, res) => {
-  const user = findUser('token', req.cookies[authCookieName]);
+apiRouter.get('/weather', verifyAuth, async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
   if (user && weatherData[user.email]) {
     res.send(weatherData[user.email]);
   } else {
@@ -91,7 +95,7 @@ apiRouter.get('/weather', verifyAuth, (req, res) => {
   }
 });
 
-// Create User
+// Helper Functions
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
   const user = { email, password: passwordHash, token: uuid.v4() };
@@ -99,12 +103,10 @@ async function createUser(email, password) {
   return user;
 }
 
-// Find User
 async function findUser(field, value) {
   return users.find((u) => u[field] === value);
 }
 
-// Set Auth Cookie
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
     secure: true,
@@ -113,18 +115,18 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-// // Generate Random Weather Data
-// function generateRandomWeather() {
-//   const weatherTypes = ["Sunny", "Cloudy", "Rainy", "Snowy", "Stormy"];
-//   return {
-//     temperature: Math.floor(Math.random() * (100 - 30) + 30),
-//     windSpeed: Math.floor(Math.random() * (25 - 1) + 1),
-//     humidity: Math.floor(Math.random() * (100 - 20) + 20),
-//     weatherType: weatherTypes[Math.floor(Math.random() * weatherTypes.length)],
-//   };
-// }
+async function fetchWeather(city) {
+  const apiKey = process.env.API_KEY;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching weather data:', error.message);
+    return null;
+  }
+}
 
-// Start Server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
