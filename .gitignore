@@ -3,3 +3,4 @@
 node_modules/
 weather.env
 dist
+dbConfig.json
